@@ -1,20 +1,15 @@
-# Twitch Chat
+# TwitchFa Chat
 
 ## Description
-Simple overlay for twitch chat
+A bridge for Iranians who are restricted to access `twitch.tv`.
 
 ## Built with
-* html
-* tailwindcss
 * javascript
 * tmi.js
 
-## Future Updates
-- [*] emotes support
-
-## Author
-**xMetaneRx**
-- [Profile](https://github.com/xMetaneRx "xMetaneRx")
-- [Website](https://xmetanerx-github-io.vercel.app/ "Portfolio")
-
-Give a ⭐️ if you like this project!
+## Authors
+[**xMetaneRx**](https://github.com/xMetaneRx)
+[(Repo)](https://github.com/xMetaneRx/twitch-chat)
+\
+[**Ali Khalilifar**](https://github.com/alikhalilifar)
+[(Repo)](https://github.com/alikhalilifar/persian-twitch-client)

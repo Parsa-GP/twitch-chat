@@ -1,11 +1,6 @@
-function mentionBolder(msg) {
-    const output = msg.replace(/@(\S+)/g, "<b>@$1</b>");
-    return output;
-}
-
-const searchParams = new URLSearchParams(window.location.search);
-if (searchParams.has('channel')) {
-    chnl = searchParams.get('channel');
+const searchPar = new URLSearchParams(window.location.search);
+if (searchPar.has('channel')) {
+    chnl = searchPar.get('channel');
 } else {
     console.log("A Code error :\(")
     throw new Error('The channel is not loaded');
@@ -24,6 +19,7 @@ const client = new tmi.Client({
 client.connect();
 
 client.on('message', (channel, tags, message, self) => {
+    // console.log(tags)
     let messageWithEmoticons = message;
     const emotes = tags['emotes'];
     if(emotes) {
@@ -45,16 +41,16 @@ client.on('message', (channel, tags, message, self) => {
     messageContainer.classList.add('message');
 
     if(tags['mod'] === true) {
-        userInfo.innerHTML = mentionBolder(`<b>[MOD]</b> ${tags['display-name']}: `);
+        userInfo.innerHTML = `<img src="img/mod.png" class="badge"> <span class="display-name" style="color:${tags['color']};">${tags['display-name']}:</span> `;
         userInfo.classList.add('mod');
     } else if(tags['vip'] === true) {
-        userInfo.innerHTML = mentionBolder(`<b>(VIP)</b> ${tags['display-name']}: `);
+        userInfo.innerHTML = `<img src="img/vip.png" class="badge"> <span class="display-name" style="color:${tags['color']};">${tags['display-name']}:</span> `;
         userInfo.classList.add('vip');
     } else if(tags['subscriber'] === true) {
-        userInfo.innerHTML = mentionBolder(`<b>{SUB}</b> ${tags['display-name']}: `);
+        userInfo.innerHTML = `<img src="img/sub.png" class="badge"> <span class="display-name" style="color:${tags['color']};">${tags['display-name']}:</span> `;
         userInfo.classList.add('sub');
     } else {
-        userInfo.innerHTML = mentionBolder(`${tags['display-name']}: `);
+        userInfo.innerHTML = `<span style="color:${tags['color']};">${tags['display-name']}</span>: `;
         userInfo.classList.add('usr');
     }
 
