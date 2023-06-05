@@ -1,0 +1,18 @@
+body {
+    background-color: rgb(36, 36, 36);
+    color: rgb(235, 235, 235);
+}
+
+.mod {color: rgb(149, 233, 170)} /* Moderator */
+.vip {color:rgb(238, 206, 25)}   /* VIP */
+.sub {color: rgb(228, 83, 83)}   /* Subscriber */
+.usr {color: rgb(207, 220, 231)}  /* User */
+
+.message {
+    padding-bottom: 5px;
+    font-family: Arial, Helvetica, sans-serif
+}
+
+.prefix {
+    font-weight: bold;
+}

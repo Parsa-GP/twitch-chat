@@ -1,5 +1,25 @@
+
+function mentionBolder(msg) {
+    const output = msg.replace(/@(\S+)/g, "<b>@$1</b>");
+    return output;
+}
+
+const searchParams = new URLSearchParams(window.location.search);
+if (searchParams.has('channel')) {
+    chnl = searchParams.get('channel');
+} else {
+    console.log("A Code error :\(")
+    throw new Error('The channel is not loaded');
+}
+
+
 const client = new tmi.Client({
-    channels: ['']
+   channels: [chnl],
+   connection: {
+      server: "tw-chat-rly.fly.dev",
+      port: 443,
+      secure: true,
+   },
 });
 
 client.connect();
@@ -23,21 +43,20 @@ client.on('message', (channel, tags, message, self) => {
     const userInfo = document.createElement('span');
     const newMessage = document.createElement('span');
 
-    messageContainer.classList.add('message', 'my-2', 'block', 'flex-col', 'p-5', 'bg-gray-100', 'w-auto', 'rounded-md');
-    userInfo.classList.add('text-gray-800', 'mr-1', 'max-h-6', 'max-w-4');
+    messageContainer.classList.add('message');
 
     if(tags['mod'] === true) {
-        userInfo.textContent = `/sys/${tags['display-name']}$`;
-        userInfo.classList.add('text-red-500');
+        userInfo.innerHTML = mentionBolder(`<b>[MOD]</b> ${tags['display-name']}: `);
+        userInfo.classList.add('mod');
     } else if(tags['vip'] === true) {
-        userInfo.textContent = `/etc/${tags['display-name']}$`;
-        userInfo.classList.add('text-pink-500');
+        userInfo.innerHTML = mentionBolder(`<b>(VIP)</b> ${tags['display-name']}: `);
+        userInfo.classList.add('vip');
     } else if(tags['subscriber'] === true) {
-        userInfo.textContent = `/opt/${tags['display-name']}$`;
-        userInfo.classList.add('text-green-500');
+        userInfo.innerHTML = mentionBolder(`<b>{SUB}</b> ${tags['display-name']}: `);
+        userInfo.classList.add('sub');
     } else {
-        userInfo.textContent = `/usr/${tags['display-name']}$`;
-        userInfo.classList.add('text-stone-500');
+        userInfo.innerHTML = mentionBolder(`${tags['display-name']}: `);
+        userInfo.classList.add('usr');
     }
 
     newMessage.innerHTML = messageWithEmoticons;
