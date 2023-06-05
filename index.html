@@ -7,17 +7,19 @@
     <title>Twitch Client</title>
     <script src="./tmi.min.js"></script>
     <script src="script.js"></script>
+    <script src="chat.js"></script>
     <link href="style.css" rel="stylesheet">
 </head>
 <body>
-    <video id="stream" controls autoplay>
-        <source type="application/x-mpegURL">
-    </video>
-    <select id="qualityDropdown">
-        <option value="">Select Quality</option>
-    </select>
-    <script src="quality_selector.js"></script>
+    <div class="video-container">
+        <video id="stream" controls autoplay>
+            <source type="application/x-mpegURL">
+        </video>
+        <select id="qualityDropdown"><option value="">Quality</option></select>
+    </div>
+    <div class="filler"></div>
       
+    <script src="quality_selector.js"></script>
     <div id="chat-container"></div>
 </body>
 </html>
