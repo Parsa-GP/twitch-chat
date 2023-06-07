@@ -3,17 +3,17 @@
 ## Description
 A bridge for Iranians who are restricted to access `twitch.tv`.
 
-- The video player is for android browser (tested in android 12, idk if it works on lower version of androids)
+- The stream player is for android browser (tested in android 12, idk if it works on lower version of androids)
 
 ## TODO List
-1. set default quality, when page is loaded, play the stream automatically
+1. Set default quality. when page is loaded, play the stream automatically
 2. Design a custom controler (the functions kinda ready, `playStream()` and `muteStream()`)
 3. Send chat (maybe never added, because it require loging in or enter api code or something)
-4. Get app working perfectly fine in android web browser and desktop browser
-5. Make an Explore section with [TwitchFa](https://twitchfa.com/)'s [API](https://api.twitchfa.com/v2/twitch/streamers?page=1&limit=100)
+4. Get app working perfectly fine in desktop
+5. Fix the viewer's text (in short usernames)
 
 ## Built with
-* javascript
+* JavaScript
 * tmi.js
 
 ## Screenshots

@@ -19,13 +19,14 @@
             <input name="channel" class="chnl-pp-input">
             <button type="submit" class="chnl-pp-submit"></button>
         </div>
+        <div id="explore-grid"></div>
     </form>
     <div class="video-container">
+        <video id="stream" controls autoplay><source type="application/x-mpegURL"></video>
         <div id="tools">
             <button id="back-to-popup" onclick="backToPopup()">Back</button>
             <select id="qualityDropdown"><option value="">Quality</option></select>
         </div>
-        <video id="stream" controls autoplay><source type="application/x-mpegURL"></video>
     </div>
 
     <div class="filler"></div>
