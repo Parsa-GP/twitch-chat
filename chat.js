@@ -2,10 +2,12 @@ const searchPar = new URLSearchParams(window.location.search);
 if (searchPar.has('channel')) {
     chnl = searchPar.get('channel');
 } else {
-    console.log("A Code error :\(")
     throw new Error('The channel is not loaded');
 }
 
+function backToPopup() {
+    window.location.href = window.location.origin + window.location.pathname
+}
 
 const client = new tmi.Client({
    channels: [chnl],

@@ -1,8 +1,9 @@
 const search_params = new URLSearchParams(window.location.search);
 if (search_params.has('channel')) {
     chnl = search_params.get('channel');
+    document.getElementById("popup").style.opacity = 0
+    document.getElementById("popup").style.display = "none"
 } else {
-    console.log("A Code error :\(")
     throw new Error('The channel is not loaded');
 }
 
