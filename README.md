@@ -11,6 +11,7 @@ A bridge for Iranians who are restricted to access `twitch.tv`.
 3. Send chat (maybe never added, because it require loging in or enter api code or something)
 4. Get app working perfectly fine in desktop
 5. Fix the viewer's text (in short usernames)
+6. Add OnClick thing for explore to go to stream directly without enterong something
 
 ## Built with
 * JavaScript
