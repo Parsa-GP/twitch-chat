@@ -19,21 +19,21 @@ body {
 
 .mod {color: var(--badge-mod-color);
     /* -webkit-text-stroke: 0.2px var(--badge-mod-color); */
-    text-shadow: 0 0 8px var(--badge-mod-color)} /* Moderator */
+    text-shadow: 0 0 7px var(--badge-mod-color)} /* Moderator */
 .mod > .badge {
     box-shadow: 0 0 15px var(--badge-mod-color);
 }
 
 .vip {color: var(--badge-vip-color);
     /* -webkit-text-stroke: 0.2px var(--badge-vip-color); */
-    text-shadow: 0 0 8px var(--badge-vip-color)}   /* VIP */
+    text-shadow: 0 0 7px var(--badge-vip-color)}   /* VIP */
 .vip > .badge {
     box-shadow: 0 0 15px var(--badge-vip-color);
 }
     
 .sub {color: var(--badge-sub-color);
     /* -webkit-text-stroke: 0.2px var(--badge-sub-color); */
-    text-shadow: 0 0 8px var(--badge-sub-color)}   /* Subscriber */
+    text-shadow: 0 0 7px var(--badge-sub-color)}   /* Subscriber */
 .sub > .badge {
     box-shadow: 0 0 15px var(--badge-sub-color);
 }
