@@ -30,7 +30,7 @@ client.on('message', (channel, tags, message, self) => {
             const start = parseInt(splitEmote[0]);
             const end = parseInt(splitEmote[1]) + 1;
             const emoteContent = message.substring(start, end);
-            const emote = `<img src="https://static-cdn.jtvnw.net/emoticons/v1/${property}/1.0" />`;
+            const emote = `<img class="emote" src="https://static-cdn.jtvnw.net/emoticons/v1/${property}/1.0" />`;
             messageWithEmoticons = messageWithEmoticons.replaceAll(emoteContent, emote);
         }
     }
@@ -43,13 +43,13 @@ client.on('message', (channel, tags, message, self) => {
     messageContainer.classList.add('message');
 
     if(tags['mod'] === true) {
-        userInfo.innerHTML = `<img src="img/mod.png" class="badge"> <span class="display-name" style="color:${tags['color']};">${tags['display-name']}:</span> `;
+        userInfo.innerHTML = `<img src="img/mod.png" class="badge mod"> <span class="display-name" style="color:${tags['color']};">${tags['display-name']}:</span> `;
         userInfo.classList.add('mod');
     } else if(tags['vip'] === true) {
-        userInfo.innerHTML = `<img src="img/vip.png" class="badge"> <span class="display-name" style="color:${tags['color']};">${tags['display-name']}:</span> `;
+        userInfo.innerHTML = `<img src="img/vip.png" class="badge vip"> <span class="display-name" style="color:${tags['color']};">${tags['display-name']}:</span> `;
         userInfo.classList.add('vip');
     } else if(tags['subscriber'] === true) {
-        userInfo.innerHTML = `<img src="img/sub.png" class="badge"> <span class="display-name" style="color:${tags['color']};">${tags['display-name']}:</span> `;
+        userInfo.innerHTML = `<img src="img/sub.png" class="badge sub"> <span class="display-name" style="color:${tags['color']};">${tags['display-name']}:</span> `;
         userInfo.classList.add('sub');
     } else {
         userInfo.innerHTML = `<span style="color:${tags['color']};">${tags['display-name']}</span>: `;

@@ -5,6 +5,10 @@
     --ambient-color: rgb(218, 62, 218);
     --transition-duration: 200ms;
     --column-count: 2;
+
+    --badge-mod-color: rgb(0, 173, 3);
+    --badge-vip-color: rgb(251, 15, 203);
+    --badge-sub-color: rgb(149, 0, 209);
 }
 
 body {
@@ -12,19 +16,46 @@ body {
     color: rgb(235, 235, 235);
 }
 
-.mod {color: rgb(0, 173, 3); text-shadow: 0 0 2px rgb(0, 173, 3)} /* Moderator */
-.vip {color:rgb(251, 15, 203); text-shadow: 0 0 2px rgb(251, 15, 203) }   /* VIP */
-.sub {color: rgb(149, 0, 209); text-shadow: 0 0 2px rgb(149, 0, 209)}   /* Subscriber */
+
+.mod {color: var(--badge-mod-color);
+    /* -webkit-text-stroke: 0.2px var(--badge-mod-color); */
+    text-shadow: 0 0 8px var(--badge-mod-color)} /* Moderator */
+.mod > .badge {
+    box-shadow: 0 0 15px var(--badge-mod-color);
+}
+
+.vip {color: var(--badge-vip-color);
+    /* -webkit-text-stroke: 0.2px var(--badge-vip-color); */
+    text-shadow: 0 0 8px var(--badge-vip-color)}   /* VIP */
+.vip > .badge {
+    box-shadow: 0 0 15px var(--badge-vip-color);
+}
+    
+.sub {color: var(--badge-sub-color);
+    /* -webkit-text-stroke: 0.2px var(--badge-sub-color); */
+    text-shadow: 0 0 8px var(--badge-sub-color)}   /* Subscriber */
+.sub > .badge {
+    box-shadow: 0 0 15px var(--badge-sub-color);
+}
+    
 .usr {color: rgb(207, 220, 231)}  /* User */
+
 .badge {width:15px; height:15px;}
 .display-name {font-weight: bold;}
-.prefix {font-weight: bold;}
+.prefix {font-weight: bolder;}
+
+.pride-flag {
+    background: linear-gradient(90deg, red 16.66%, orange 0 33.33%, yellow 0 50%, green 0 66.66%, blue 0 83.33%, indigo 0)
+}
+
+.emote {
+    height: 25px;
+}
 
 .message {
     padding-bottom: 5px;
     font-family: var(--font-family)
 }
-
 
 #tools > * {
     position: relative;
@@ -66,16 +97,21 @@ body {
 .video-container {
     z-index: 1;
     position: fixed;
-    background-color: var(--ambient-color);
+    background-color: transparent;
     width: 100%;
     aspect-ratio: 16/9;
+    transition-duration: var(--transition-duration);
+}
+
+.video-container:hover {
+    transition-duration: var(--transition-duration);
+    background: linear-gradient(90deg, red 16.66%, orange 0 33.33%, yellow 0 50%, green 0 66.66%, blue 0 83.33%, indigo 0)
 }
 
 .filler {
     visibility:hidden;
     width: 100%;
     aspect-ratio: 16/9;
-    margin-bottom: 10px;
 }
 
 #chat-container {

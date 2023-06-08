@@ -1,3 +1,7 @@
+if (new Date().getMonth() == 5) {
+    document.getElementById("popup").classList.add('pride-flag');
+}
+
 function t2e(input, twitchId) {
     let output;
     let data_response;
