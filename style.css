@@ -216,6 +216,7 @@ body {
     transition-timing-function:ease-out;
     transition-duration: var(--transition-duration);
     border-radius: 99px;
+    margin: 0 10px;
 }
 
 .chnl-pp-container:hover {
@@ -361,12 +362,19 @@ body {
 
 /* Responsive */
 @media only screen and (max-width: 350px) {
-    /* For tablets: */
+    /* For Nokia 1100: */
     :root {
         --column-count: 1;
     }
     #popup > label {font-size: 1.4em;}
     .chnl-pp-container {top: 16%;}
+}
+@media only screen and (max-width: 328px) {
+    :root {
+        --column-count: 1;
+    }
+    #popup > label {font-size: 1.2em;}
+    .chnl-pp-container {top: 15%;width: 100vw;}
 }
 @media only screen and (min-width: 600px) {
     /* For tablets: */
