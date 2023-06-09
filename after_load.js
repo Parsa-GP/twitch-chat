@@ -128,9 +128,8 @@ function exploreTable() {
 
             container.appendChild(exitem);
         })
-      .catch(error => {console.log(error); ERR = true});
-    
       })
+      .catch(error => {console.log(error); ERR = true});
 }
 
 qualityDropdown.addEventListener("change", function() {
