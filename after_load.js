@@ -16,12 +16,21 @@ fetch(`https://tw-rly.fly.dev/streamer/${chnl}`)
     const json_data = JSON.parse(JSON.stringify(response_data));
     const qualityDropdown = document.getElementById("qualityDropdown");
 
+    let def;
     for (let i = 0; i < json_data.length; i++) {
         const option = document.createElement("option");
         option.value = json_data[i].url;
         option.text = json_data[i].quality;
         qualityDropdown.appendChild(option);
+        if (json_data[i].quality == "480p") {
+            def = json_data[i].url
+        }
     }
+    document.getElementById('qualityDropdown').value = def;
+    const src = document.getElementById('stream-src');
+    src.src = def;
+    const vid = document.getElementById('stream');
+    vid.load();
 })
 .catch(error => console.error(error));
 
