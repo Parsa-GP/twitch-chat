@@ -2,8 +2,9 @@
 
 :root {
     --font-family: Vazirmatn, Arial, Helvetica, sans-serif;
-    --ambient-color: rgb(145, 70, 255);
+    --ambient-color: #9146ff;
     --ambient-color-rgb: 145, 70, 255;
+    --ambient-color-hsl: 264, 100%;
     --transition-duration: 200ms;
     --column-count: 2;
 
@@ -67,8 +68,8 @@ body {
     padding: 5px;
     border-radius: 99px;
     border: 2px solid var(--ambient-color);
-    background-color: rgba(var(--ambient-color-rgb), 0.2);
-    color: var(--ambient-color);
+    background-color: hsla(var(--ambient-color-hsl), 50%, 0.7);
+    color: hsl(var(--ambient-color-hsl), 80%);
     margin-right: 4px;
     outline: none;
 }

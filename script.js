@@ -4,6 +4,13 @@ if (new Date().getMonth() == 5) {
     }
 }
 
+let thumb_w = 1920;
+let thumb_h = 1080;
+
+function thumbUrl(chnl) {
+    return `https://static-cdn.jtvnw.net/previews-ttv/live_user_${chnl}-${thumb_w}x${thumb_h}.jpg`
+}
+
 function t2e(input, twitchId) {
     let output;
     let data_response;
@@ -28,3 +35,4 @@ function t2e(input, twitchId) {
     }
     
 }
+

@@ -8,6 +8,9 @@ if (search_params.has('channel')) {
     throw new Error('The channel is not loaded');
 }
 
+const video = document.getElementById('stream');
+video.poster = thumbUrl(chnl);
+video.addEventListener('error', function(e) {console.error('Error during video playback:', e)})
 
 fetch(`https://tw-rly.fly.dev/streamer/${chnl}`)
 .then(response => response.json())
@@ -35,6 +38,18 @@ fetch(`https://tw-rly.fly.dev/streamer/${chnl}`)
 .catch(error => console.error(error));
 
 function playStream(url) {
+    var stream = document.getElementById('stream');
+    var src = document.getElementById('stream-src');
+    if (Hls.isSupported()) {
+        var hls = new Hls();
+        hls.loadSource(url);
+        hls.attachMedia(stream);
+    } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+        src.src = url;
+    }
+    video.load();
+
+    /*  
     const video = document.querySelector('video');
     video.querySelector('source').setAttribute('src', url);
     video.load();
@@ -43,6 +58,8 @@ function playStream(url) {
     } else {
         video.pause();
     }
+
+    */
 
 }
 function muteStream() {
@@ -69,9 +86,14 @@ function msToHMS(ms) {
     if (seconds < 10) {
         seconds = "0" + seconds;
     }
-    return hours+":"+minutes+":"+seconds;
+    if (hours == 0) {
+        return minutes+":"+seconds;
+    } else {
+        return hours+":"+minutes+":"+seconds;
+    }
 }
 function exploreTable() {
+    // You can modify the thumb_w and thumb_h in script.js.
     fetch(`https://api.twitchfa.com/v2/twitch/streamers?page=1&limit=100`)
       .then(response => response.json())
       .then(data => {resp_data = data
@@ -87,7 +109,7 @@ function exploreTable() {
             const thumbnail = document.createElement('img');
             thumbnail.classList.add("ex-thumb");
             thumbnail.loading = "lazy"
-            thumbnail.src = item.thumbnailUrl.replace("{width}", "1080").replace("{height}", "1920");
+            thumbnail.src = item.thumbnailUrl.replace("{width}", thumb_w).replace("{height}", thumb_h);
 
             // Bottom Container
             const btm = document.createElement('div');
