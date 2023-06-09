@@ -40,14 +40,8 @@ fetch(`https://tw-rly.fly.dev/streamer/${chnl}`)
 function playStream(url) {
     var stream = document.getElementById('stream');
     var src = document.getElementById('stream-src');
-    if (Hls.isSupported()) {
-        var hls = new Hls();
-        hls.loadSource(url);
-        hls.attachMedia(stream);
-    } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-        src.src = url;
-    }
-    video.load();
+    stream.load();
+    src.src = url;
 
     /*  
     const video = document.querySelector('video');
