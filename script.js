@@ -1,5 +1,7 @@
 if (new Date().getMonth() == 5) {
-    document.getElementById("popup").classList.add('pride-flag');
+    if (document.getElementById("popup")) {
+        document.getElementById("popup").classList.add('pride-flag');
+    }
 }
 
 function t2e(input, twitchId) {
@@ -26,4 +28,3 @@ function t2e(input, twitchId) {
     }
     
 }
-

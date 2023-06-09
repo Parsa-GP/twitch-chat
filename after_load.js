@@ -36,7 +36,6 @@ function playStream(url) {
     }
 
 }
-
 function muteStream() {
     const video = document.querySelector('video');
     if (video.volume == 1) {
@@ -46,7 +45,23 @@ function muteStream() {
     }
     
 }
+function msToHMS(ms) {
+    let seconds = ms / 1000;
 
+    let hours = parseInt( seconds / 3600 );
+    seconds = seconds % 3600;
+
+    let minutes = parseInt( seconds / 60 );
+    seconds = Math.floor(seconds % 60);
+
+    if (minutes < 10) {
+        minutes = "0" + minutes;
+    }
+    if (seconds < 10) {
+        seconds = "0" + seconds;
+    }
+    return hours+":"+minutes+":"+seconds;
+}
 function exploreTable() {
     fetch(`https://api.twitchfa.com/v2/twitch/streamers?page=1&limit=100`)
       .then(response => response.json())
@@ -62,6 +77,7 @@ function exploreTable() {
             // Thumbnail
             const thumbnail = document.createElement('img');
             thumbnail.classList.add("ex-thumb");
+            thumbnail.loading = "lazy"
             thumbnail.src = item.thumbnailUrl.replace("{width}", "1080").replace("{height}", "1920");
 
             // Bottom Container
@@ -71,6 +87,7 @@ function exploreTable() {
             // Profile Picture
             const profile = document.createElement('img');
             profile.classList.add("ex-pfp");
+            profile.loading = "lazy"
             profile.src = item.profileUrl;
 
             
@@ -82,6 +99,11 @@ function exploreTable() {
             const displayName = document.createElement('p');
             displayName.classList.add("ex-name");
             displayName.textContent = item.displayName;
+
+            // Display Name
+            const upTime = document.createElement('p');
+            upTime.classList.add("ex-uptime");
+            upTime.textContent = msToHMS(item.uptime);
 
             // Game Name
             const gameName = document.createElement('p');
@@ -100,6 +122,7 @@ function exploreTable() {
             btm.appendChild(cont);
 
             exitem.appendChild(viewers);
+            exitem.appendChild(upTime);
             exitem.appendChild(thumbnail);
             exitem.appendChild(btm);
 

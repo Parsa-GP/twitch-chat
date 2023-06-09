@@ -262,7 +262,7 @@ body {
 .ex-item {
     padding: 7px;
     font-family: var(--font-family);
-    width: calc(100% - 14px);
+    width: calc(100% - 16px);
     background-color: #0a0a0ab6;
     border-radius: 15px;
     box-shadow: 0 0 10px rgba(12, 12, 12, 0.9);
@@ -270,6 +270,9 @@ body {
     justify-items: center;
     max-width: 100%;
     position: relative;
+    border: 1px solid rgb(22, 22, 22);
+    border-top: 1px solid rgb(26, 26, 26);
+    border-left: 1px solid rgb(24, 24, 24);
 }
 .ex-item:link {color:white}
 .ex-item:visited {color: white}
@@ -280,51 +283,13 @@ body {
 }
 .ex-item:active {color:white; scale: 1.2}
 
+
+/* ExploreItem Elements */ 
 .ex-item > .ex-thumb {
     width: 100%;
     aspect-ratio: 16/9;
     border-radius: 15px;
-}
-.ex-item .ex-pfp {
-    float: left;
-    width: 40px;
-    aspect-ratio: 1/1;
-    border-radius: 99px;
-    border: 2px solid var(--ambient-color);
-    margin-right: 6px;
-}
-.ex-item .ex-name {
-    font-size: 1em;
-}
-.ex-item .ex-view {
-    font-weight: bold;
-    position: absolute;
-    font-size: 0.8em;
-    background-color: #000000aa;
-    border-radius: 99px;
-    padding: 0px 5px;
-    margin: 4px;
-}
-.ex-item .ex-eye {
-    width: 17px;
-    position: relative;
-    top: 2px;
-    aspect-ratio: 1/1;
-    top: 3px;
-}
-
-.ex-item .ex-text {
-    display: inline-flex;
-    flex-direction: column;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    position: absolute;
-    margin-left: 50px;
-    width: calc(100% - 70px);
-    line-height: 0.5;
-    padding: 7px 0;
-    
+    border: 1px solid #1d1d1d;
 }
 
 .ex-item > .ex-btm {
@@ -332,11 +297,65 @@ body {
     width: 100%;
     align-items: center;
 }
-.ex-item .ex-gname {
-    font-size: 0.9em;
-    color: var(--ambient-color);
-    padding-top: 10px;
-}
+
+    .ex-view {
+        font-weight: bold;
+        position: absolute;
+        font-size: 0.8em;
+        background-color: #000000aa;
+        border-radius: 99px;
+        padding: 0px 5px;
+        margin: 4px;
+    }
+
+    .ex-eye {
+        width: 15px;
+        position: relative;
+        top: 2px;
+        aspect-ratio: 1/1;
+        top: 3px;
+    }
+
+    .ex-pfp {
+        float: left;
+        width: 40px;
+        aspect-ratio: 1/1;
+        border-radius: 99px;
+        border: 2px solid var(--ambient-color);
+        margin-right: 6px;
+    }
+
+    .ex-text {
+        display: inline-flex;
+        flex-direction: column;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        position: absolute;
+        margin-left: 50px;
+        width: calc(100% - 70px);
+        line-height: 0.5;
+        padding: 7px 0;
+    }
+
+        .ex-name {font-size: 1em;}
+
+        .ex-uptime {
+            font-weight: bold;
+            position: absolute;
+            font-size: 0.8em;
+            background-color: #000000aa;
+            border-radius: 99px;
+            padding: 0px 6px;
+            margin: 4px 8px;
+            right: 0;
+        }
+
+        .ex-gname {
+            font-size: 0.9em;
+            color: var(--ambient-color);
+            padding-top: 10px;
+        }
 
 
 /* Responsive */
