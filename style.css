@@ -19,27 +19,26 @@ body {
 
 
 .mod {color: var(--badge-mod-color);
-    /* -webkit-text-stroke: 0.2px var(--badge-mod-color); */
-    text-shadow: 0 0 7px var(--badge-mod-color)} /* Moderator */
+    -webkit-text-stroke: 0.3px var(--badge-mod-color)} /* Moderator */
 .mod > .badge {
     box-shadow: 0 0 15px var(--badge-mod-color);
 }
 
 .vip {color: var(--badge-vip-color);
-    /* -webkit-text-stroke: 0.2px var(--badge-vip-color); */
-    text-shadow: 0 0 7px var(--badge-vip-color)}   /* VIP */
+    -webkit-text-stroke: 0.3px var(--badge-vip-color)}   /* VIP */
 .vip > .badge {
     box-shadow: 0 0 15px var(--badge-vip-color);
 }
     
 .sub {color: var(--badge-sub-color);
-    /* -webkit-text-stroke: 0.2px var(--badge-sub-color); */
-    text-shadow: 0 0 7px var(--badge-sub-color)}   /* Subscriber */
+    -webkit-text-stroke: 0.3px var(--badge-sub-color)}   /* Subscriber */
 .sub > .badge {
     box-shadow: 0 0 15px var(--badge-sub-color);
 }
     
-.usr {color: rgb(207, 220, 231)}  /* User */
+.usr {color: rgb(207, 220, 231);
+        font-weight: 400;
+        -webkit-text-stroke: 0.4px black;}  /* User */
 
 .badge {width:15px; height:15px;}
 .display-name {font-weight: bold;}
@@ -51,6 +50,8 @@ body {
 
 .emote {
     height: 25px;
+    top: 3px;
+    position: relative;
 }
 
 .message {
