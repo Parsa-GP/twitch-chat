@@ -75,7 +75,11 @@ function bioInfo(streamer) {
             bio_cont.appendChild(bioitem);
         })
     })
-    .catch(error => {console.log(error); ERR = true});
+    .catch(error => {
+        console.log(error);
+        ERR = true;
+        setTimeout(function() {bioInfo(streamer)}, 5000);
+    });
 
 }
 

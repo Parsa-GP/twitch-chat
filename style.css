@@ -154,7 +154,7 @@ body {
 #chat-container {
     clear: both;
     padding: 10px;
-    overflow: auto;
+    overflow-y: scroll;
     -ms-overflow-style: none;  /* Internet Explorer and Edge */
     scrollbar-width: none;  /* Firefox */
 }
@@ -403,7 +403,11 @@ body {
 #bio-name {
     font-family: var(--font-family);
     font-size: larger;
-
+}
+#bio-desc {
+    font-family: var(--font-family);
+    font-size: small;
+    font-weight: light;
 }
 
 .bio-info {
