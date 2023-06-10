@@ -360,6 +360,40 @@ body {
             padding-top: 10px;
         }
 
+#bio {
+    background-color: #1d1d1d;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+#bio-pfp {
+    width: 50px;
+    aspect-ratio: 1/1;
+    border-radius: 99px;
+    border: 2px solid var(--ambient-color);
+    margin-right: 8px;
+}
+
+#bio-name {
+    font-family: var(--font-family);
+    font-size: larger;
+
+}
+
+.bio-info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.bio-soical {
+    width: 30px;
+    aspect-ratio: 1/1;
+}
+
+#bio-soical-cont {
+    display: inline-flex;
+}
 
 /* Responsive */
 @media only screen and (max-width: 350px) {

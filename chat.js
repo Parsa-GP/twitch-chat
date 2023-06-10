@@ -5,10 +5,6 @@ if (searchPar.has('channel')) {
     throw new Error('The channel is not loaded');
 }
 
-function backToPopup() {
-    window.location.href = window.location.origin + window.location.pathname
-}
-
 const client = new tmi.Client({
    channels: [chnl],
    connection: {
@@ -21,7 +17,7 @@ const client = new tmi.Client({
 client.connect();
 
 client.on('message', (channel, tags, message, self) => {
-    // console.log(tags)
+    console.log(tags)
     let messageWithEmoticons = message;
     const emotes = tags['emotes'];
     if(emotes) {
@@ -64,7 +60,5 @@ client.on('message', (channel, tags, message, self) => {
     container.appendChild(messageContainer);
 
     const messages = document.querySelectorAll('.message');
-    const lastMessage = messages[messages.length - 1];
-
-    lastMessage.scrollIntoView(true);
+    messages[messages.length - 1].scrollIntoView(true);
 })

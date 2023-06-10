@@ -1,22 +1,28 @@
+// Set chnl to ?channel=
 const search_params = new URLSearchParams(window.location.search);
 if (search_params.has('channel')) {
     chnl = search_params.get('channel');
-    document.getElementById("popup").style.opacity = 0
     document.getElementById("popup").style.display = "none"
+    bioInfo(chnl);
 } else {
     exploreTable();
     throw new Error('The channel is not loaded');
 }
+// Set variables
+let stream = document.getElementById('stream');
+let src = document.getElementById('stream-src');
+stream.poster = thumbUrl(chnl);
+stream.addEventListener('error', function(e) {console.error('Error during video playback:', e)})
 
-const video = document.getElementById('stream');
-video.poster = thumbUrl(chnl);
-video.addEventListener('error', function(e) {console.error('Error during video playback:', e)})
+qualityDropdown.addEventListener("change", function() {
+    const selectedUrl = qualityDropdown.value;
+    if (selectedUrl !== "") {playStream(selectedUrl)}});
+  
 
 fetch(`https://tw-rly.fly.dev/streamer/${chnl}`)
 .then(response => response.json())
 .then(data => {
-    response_data = data;
-    const json_data = JSON.parse(JSON.stringify(response_data));
+    const json_data = JSON.parse(JSON.stringify(data));
     const qualityDropdown = document.getElementById("qualityDropdown");
 
     let def;
@@ -32,39 +38,65 @@ fetch(`https://tw-rly.fly.dev/streamer/${chnl}`)
     document.getElementById('qualityDropdown').value = def;
     const src = document.getElementById('stream-src');
     src.src = def;
-    const vid = document.getElementById('stream');
-    vid.load();
-})
-.catch(error => console.error(error));
-
-function playStream(url) {
-    var stream = document.getElementById('stream');
-    var src = document.getElementById('stream-src');
     stream.load();
-    src.src = url;
+})
 
-    /*  
-    const video = document.querySelector('video');
-    video.querySelector('source').setAttribute('src', url);
-    video.load();
-    if (video.paused) {
-        video.play();
-    } else {
-        video.pause();
-    }
+function bioInfo(streamer) {
+    fetch(`https://tw-rly.fly.dev/streamer/${streamer}/bio`)
+    .then(response => response.json())
+    .then(data => {
+        const user = data[0].data.user;
+        info = {
+            "description": user.description,
+            "isPartner": user.isPartner,
+            "profile": user.profileImageURL,
+            "follower": user.followers.totalCount,
+            "soicals": user.channel.socialMedias,
+        }
 
-    */
+        document.getElementById("bio-pfp").src = info.profile;
+        document.getElementById("bio-pfp-badge").style.display = info.isPartner;
+        document.getElementById("bio-name").innerHTML = streamer + " | " + f2k(info.follower);
+        document.getElementById("bio-desc").innerHTML = info.description;
+
+        const bio_cont = document.getElementById("bio-soical-cont");
+        info.soicals.forEach(item => {
+            const bioitem = document.createElement('a');
+            bioitem.href = item.url;
+            bioitem.classList.add('bio-item');
+
+            const soicalImage = document.createElement('img');
+            soicalImage.classList.add("bio-soical");
+            soicalImage.src = "img/soical/"+item.name+".png";
+            soicalImage.loading = "lazy";
+            soicalImage.alt = item.title;
+
+            bioitem.appendChild(soicalImage);
+            bio_cont.appendChild(bioitem);
+        })
+    })
+    .catch(error => {console.log(error); ERR = true});
 
 }
-function muteStream() {
+
+function playStream(url) {
+    src.src = url;
+    stream.load();
+    /*const video = document.querySelector('video');
+    video.querySelector('source').setAttribute('src', url);
+    video.load();
+    if (video.paused) {video.play();} else {video.pause();}*/
+}
+
+/*function muteStream() {
     const video = document.querySelector('video');
     if (video.volume == 1) {
-        video.volume = 0;
+        video.volume = 0
     } else {
         video.volume = 1
     }
     
-}
+}*/
 function msToHMS(ms) {
     let seconds = ms / 1000;
 
@@ -74,26 +106,20 @@ function msToHMS(ms) {
     let minutes = parseInt( seconds / 60 );
     seconds = Math.floor(seconds % 60);
 
-    if (minutes < 10) {
-        minutes = "0" + minutes;
-    }
-    if (seconds < 10) {
-        seconds = "0" + seconds;
-    }
-    if (hours == 0) {
-        return minutes+":"+seconds;
-    } else {
-        return hours+":"+minutes+":"+seconds;
-    }
+    if (minutes < 10) {minutes = "0" + minutes;}
+    if (seconds < 10) {seconds = "0" + seconds;}
+    if (hours == 0) {return minutes+":"+seconds;}
+    else {return hours+":"+minutes+":"+seconds;}
 }
+
 function exploreTable() {
     // You can modify the thumb_w and thumb_h in script.js.
     fetch(`https://api.twitchfa.com/v2/twitch/streamers?page=1&limit=100`)
       .then(response => response.json())
       .then(data => {resp_data = data
         const container = document.getElementById("explore-grid");
-        console.log(resp_data)
 
+        let all_viewers = 0
         resp_data.data.forEach(item => {
             const exitem = document.createElement('a');
             exitem.href = window.location.origin + window.location.pathname + "?channel=" + item.login;
@@ -139,27 +165,19 @@ function exploreTable() {
             const viewers = document.createElement('p');
             viewers.classList.add("ex-view");
             viewers.innerHTML = `<img class="ex-eye" src="img/eye.png"> ${item.viewers}`;
+            all_viewers = all_viewers + Number(item.viewers);
 
             cont.appendChild(displayName);
             cont.appendChild(gameName);
-
             btm.appendChild(profile);
             btm.appendChild(cont);
-
             exitem.appendChild(viewers);
             exitem.appendChild(upTime);
             exitem.appendChild(thumbnail);
             exitem.appendChild(btm);
-
             container.appendChild(exitem);
         })
+      document.getElementById("chnl-input").placeholder = "All viewers: " + all_viewers;
       })
       .catch(error => {console.log(error); ERR = true});
 }
-
-qualityDropdown.addEventListener("change", function() {
-  const selectedUrl = qualityDropdown.value;
-  if (selectedUrl !== "") {
-    playStream(selectedUrl);
-  }
-});
