@@ -14,7 +14,9 @@ a COMPLETE frontend webapp (kinda)
 * tmi.js
 
 ## Screenshots
-<img src="img/showcase1.jpg" alt="Showcase #1" style="max-height:500px;">
+<img src="img/showcase1.png" alt="Showcase #1" style="max-height:300px;">
+<img src="img/showcase2.png" alt="Showcase #2" style="max-height:300px;">
+<img src="img/showcase3.png" alt="Showcase #3" style="max-height:300px;">
 
 ## Contributes
 [**xMetaneRx**](https://github.com/xMetaneRx)
