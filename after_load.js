@@ -59,7 +59,7 @@ function bioInfo(streamer) {
             document.getElementById("bio-pfp-badge").style.display = "block";
         }
         document.getElementById("bio-name").innerHTML = streamer;
-        document.getElementById("bio-follower").innerHTML = f2k(info.follower) + "Followers";
+        document.getElementById("bio-follower").innerHTML = f2k(info.follower) + " Followers";
         document.getElementById("bio-desc").innerHTML = info.description;
 
         const bio_cont = document.getElementById("bio-social-cont");
