@@ -1,11 +1,12 @@
-if (new Date().getMonth() == 5) {
-    if (document.getElementById("popup")) {
-        document.getElementById("popup").classList.add('pride-flag');
-    }
+const month = new Date().getMonth();
+if (month == 5) {
+    document.querySelector(':root').style.setProperty('--vid-bg', 'linear-gradient(90deg, red 16.66%, orange 0 33.33%, yellow 0 50%, green 0 66.66%, blue 0 83.33%, indigo 0)');
+} else if (month == 11) {
+    document.querySelector(':root').style.setProperty('--vid-bg', 'linear-gradient(90deg, #00c4ff, #005aff);');
 }
 
-let thumb_w = 1920;
-let thumb_h = 1080;
+let thumb_w = 1280;
+let thumb_h = 720;
 
 function backToPopup() {
     window.location.href = window.location.origin + window.location.pathname

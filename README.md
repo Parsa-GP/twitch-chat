@@ -8,6 +8,7 @@ a COMPLETE frontend webapp (kinda)
 
 ## TODO List
 1. Get app working perfectly fine in desktop (see stream throgh desktop)
+2. Verified badge of streamers' pfp
 
 ## Built with
 * JavaScript

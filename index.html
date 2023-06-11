@@ -22,7 +22,7 @@
         </div>
         <div id="explore-grid"></div>
     </form>
-    <div class="video-container">
+    <div class="video-container" id="video-cont">
         <video id="stream" controls autoplay>
             <source id="stream-src" type="application/x-mpegURL">
         </video>
@@ -35,13 +35,18 @@
         </div>
     </div>
     <div id="bio">
-        <img id="bio-pfp">
-        <img id="bio-pfp-badge">
         <div class="bio-info">
-            <span id="bio-name"></span>
-            <span id="bio-desc"></span>
+            <img id="bio-pfp">
+            <div class="bio-nf">
+                <div class="bio-name-cont">
+                    <span id="bio-name"></span>
+                    <img id="bio-pfp-badge" src="img/partner.png">
+                </div>
+                <span id="bio-follower"></span>
+            </div>
+            <div id="bio-social-cont"></div>
         </div>
-        <div id="bio-soical-cont"></div>
+        <span id="bio-desc"></span>
     </div>
 
     <div class="filler"></div>

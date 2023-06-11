@@ -51,27 +51,31 @@ function bioInfo(streamer) {
             "isPartner": user.isPartner,
             "profile": user.profileImageURL,
             "follower": user.followers.totalCount,
-            "soicals": user.channel.socialMedias,
+            "socials": user.channel.socialMedias,
         }
 
         document.getElementById("bio-pfp").src = info.profile;
-        document.getElementById("bio-pfp-badge").style.display = info.isPartner;
-        document.getElementById("bio-name").innerHTML = streamer + " | " + f2k(info.follower);
+        if (info.isPartner) {
+            document.getElementById("bio-pfp-badge").style.display = "block";
+        }
+        document.getElementById("bio-name").innerHTML = streamer;
+        document.getElementById("bio-follower").innerHTML = f2k(info.follower);
         document.getElementById("bio-desc").innerHTML = info.description;
 
-        const bio_cont = document.getElementById("bio-soical-cont");
-        info.soicals.forEach(item => {
+        const bio_cont = document.getElementById("bio-social-cont");
+        info.socials.forEach(item => {
             const bioitem = document.createElement('a');
             bioitem.href = item.url;
             bioitem.classList.add('bio-item');
 
-            const soicalImage = document.createElement('img');
-            soicalImage.classList.add("bio-soical");
-            soicalImage.src = "img/soical/"+item.name+".png";
-            soicalImage.loading = "lazy";
-            soicalImage.alt = item.title;
+            const socialImage = document.createElement('img');
+            socialImage.classList.add("bio-social");
+            socialImage.src = "img/social/"+item.name+".png";
+            socialImage.onerror = function() {this.src = "img/social/invalid.png"};
+            socialImage.loading = "lazy";
+            socialImage.alt = item.title;
 
-            bioitem.appendChild(soicalImage);
+            bioitem.appendChild(socialImage);
             bio_cont.appendChild(bioitem);
         })
     })
@@ -155,7 +159,7 @@ function exploreTable() {
             displayName.classList.add("ex-name");
             displayName.textContent = item.displayName;
 
-            // Display Name
+            // Uptime
             const upTime = document.createElement('p');
             upTime.classList.add("ex-uptime");
             upTime.textContent = msToHMS(item.uptime);
