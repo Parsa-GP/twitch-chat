@@ -7,8 +7,7 @@ a COMPLETE frontend webapp (kinda)
 - The stream player is for android browser (tested in android 12, idk if it works on lower version of androids) howewer, the chat completely support all browsers.
 
 ## TODO List
-1. Get app working perfectly fine in desktop (see stream throgh desktop)
-2. Verified badge of streamers' pfp
+1. Get app working perfectly fine in desktop (see stream in desktop)
 
 ## Built with
 * JavaScript
