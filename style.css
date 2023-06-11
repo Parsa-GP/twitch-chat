@@ -2,50 +2,31 @@
 
 :root {
     --font-family: Vazirmatn, Arial, Helvetica, sans-serif;
-    --ambient-color: #9146ff;
-    --ambient-color-rgb: 145, 70, 255;
+    --ambient-color: hsl(264, 100%, 64%);
     --ambient-color-hsl: 264, 100%;
     --transition-duration: 200ms;
     --column-count: 2;
-
-    --badge-mod-color: rgb(0, 173, 3);
-    --badge-vip-color: rgb(251, 15, 203);
-    --badge-sub-color: rgb(149, 0, 209);
 
     --vid-bg: var(--ambient-color);
 }
 
 body {
     background-color: rgb(34, 32, 34);
-    color: rgb(235, 235, 235);
+    color: hsl(var(--ambient-color-hsl), 98%);
     overflow: hidden;
 }
 
-
-.mod {color: var(--badge-mod-color);
-    -webkit-text-stroke: 0.3px var(--badge-mod-color)} /* Moderator */
-.mod > .badge {
-    box-shadow: 0 0 15px var(--badge-mod-color);
-}
-
-.vip {color: var(--badge-vip-color);
-    -webkit-text-stroke: 0.3px var(--badge-vip-color)}   /* VIP */
-.vip > .badge {
-    box-shadow: 0 0 15px var(--badge-vip-color);
-}
-    
-.sub {color: var(--badge-sub-color);
-    -webkit-text-stroke: 0.3px var(--badge-sub-color)}   /* Subscriber */
-.sub > .badge {
-    box-shadow: 0 0 15px var(--badge-sub-color);
-}
-    
+.moderator {filter: drop-shadow(0 0 15px rgb(0, 173, 3))}
+.vip {filter: drop-shadow(0 0 15px rgb(251, 15, 203))}
+.subscriber {filter: drop-shadow(0 0 15px rgb(149, 0, 209))}
+.glhf-pledge {filter: drop-shadow(0 0 15px rgb(46, 34,48))}
+.partner {filter: drop-shadow(0 0 15px rgb(100, 65, 165))}
 .usr {color: rgb(207, 220, 231);
         font-weight: 400;
         -webkit-text-stroke: 0.4px black;}  /* User */
 
-.badge {width:15px; height:15px;}
-.display-name {font-weight: bold;}
+.badge {width:20px; height:20px;margin-right: 3px;}
+.display-name {font-weight: bold; color: hsl(var(--ambient-color-hsl), 86%);}
 .prefix {font-weight: bolder;}
 
 .emote {
@@ -56,7 +37,8 @@ body {
 
 .message {
     padding-bottom: 5px;
-    font-family: var(--font-family)
+    font-family: var(--font-family);
+    color: hsl(var(--ambient-color-hsl), 98%);
 }
 
 #tools > * {
