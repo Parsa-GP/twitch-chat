@@ -53,7 +53,7 @@ fetch('https://api.twitchfa.com/v2/twitch/streamers?page=1&limit=100')
         error_span.classList.add("error-text");
         error_span.innerHTML = `API ERROR`;
         error_div.appendChild(error_span);
-        document.body.appendChild(error_div);
+        document.getElementById("explore-grid").appendChild(error_div);
     }
   })
   .catch(function(error) {
@@ -62,7 +62,7 @@ fetch('https://api.twitchfa.com/v2/twitch/streamers?page=1&limit=100')
     const error_div = document.createElement('div');
     error_div.classList.add("error");
     error_div.innerHTML = `${data["message"]}`;
-    document.body.appendChild(error_div);
+    document.getElementById("explore-grid").appendChild(error_div);
   });
 
 if (isError) {

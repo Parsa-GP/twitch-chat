@@ -222,7 +222,7 @@ body {
     width: 100%;
     text-align: center;
     top: calc(17% - 80px);
-    text-shadow: 3px 3px 0px var(--ambient-color);
+    text-shadow: 3px 3px 2px var(--ambient-color);
     transition-duration: var(--transition-duration);
 }
 
@@ -549,22 +549,18 @@ body {
 /* Error */
 
 .error {
-    display: none;
-    z-index: 10;
-    width: 100vw;
-    height: 100vh;
+    width: calc(100vw - 30px);
     margin: 0;
-    position: absolute;
-    top: 0;
-    background-color: hsla(var(--ambient-color-hsl), 10%, 40%);
-    backdrop-filter: blur(6px);
+    position: relative;
+    height: calc(100% - 15px);
+    background-color: linear-gradient(to bottom, hsla(var(--ambient-color-hsl), 10%, 40%), hsla(var(--ambient-color-hsl), 10%, 30%)) ;
 }
 
 .error-text {
     width: 100vw;
     position: absolute;
     text-align: center;
-    top: 50%;
+    top: 30%;
     transform: translateY(-50%);
     font-family: var(--font-family);
     font-size: x-large;
