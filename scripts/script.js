@@ -8,6 +8,27 @@ if (month == 5) {
 let thumb_w = 1280;
 let thumb_h = 720;
 
+function getCookie(cname) {
+    /* thanks w3school */
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for(let i = 0; i <ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+}
+
+function setCookie(cname, cvalue) {
+    document.cookie = getCookie() + cname + "=" + cvalue + ";";
+}
+
 function backToPopup() {
     window.location.href = window.location.origin + window.location.pathname
 }

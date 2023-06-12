@@ -1,5 +1,48 @@
 let isError = false;
 let err = "";
+
+var slider = document.getElementById("set-color-hue");
+var setbtn = document.getElementById("settings-btn");
+var setsub = document.getElementById("set-submit");
+var setcont = document.getElementById("settings-cont");
+
+let Root = document.querySelector(':root').style
+
+let hue = 264;
+let saturation = 100;
+
+if (document.cookie.indexOf('hue=') == -1) {
+    document.cookie = "hue=264";
+    hue = 264;
+} else {
+    hue = getCookie("hue");
+}
+slider.value = hue
+Root.setProperty('--ambient-color', `hsl(${hue}, ${saturation}%, 64%)`);
+Root.setProperty('--ambient-color-hsl', `${hue}, ${saturation}%`);
+
+slider.oninput = function() {
+    hue = this.value;
+    setCookie("hue", this.value)
+    Root.setProperty('--ambient-color', `hsl(${hue}, ${saturation}%, 64%)`);
+    Root.setProperty('--ambient-color-hsl', `${hue}, ${saturation}%`);
+}
+function resetHue() {
+    document.cookie = "hue=264";
+    hue = 264;
+    slider.value = hue
+    Root.setProperty('--ambient-color', `hsl(${hue}, ${saturation}%, 64%)`);
+    Root.setProperty('--ambient-color-hsl', `${hue}, ${saturation}%`);
+}
+function setBtn() {
+    document.getElementById("settings-cont").style.display = "flex"
+}
+function setSub() {
+    document.getElementById("settings-cont").style.display = "none"
+}
+    
+
+
 fetch('https://api.twitchfa.com/v2/twitch/streamers?page=1&limit=100')  
   .then(function(response) {
       if(!response.ok) {

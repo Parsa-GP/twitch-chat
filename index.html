@@ -14,12 +14,19 @@
     <!--<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />-->
 </head>
 <body>
+    <div id="settings-cont">
+        <input type="range" min="0" max="359" value="264" id="set-color-hue">
+        <button id="reset-hue" onclick="resetHue()">Reset Color</button>
+        <button id="set-submit" onclick="setSub()">Back</button>
+    </div>
+
     <form target="_self" method="get" class="chnl-pp-bg" id="popup">
         <label>Type the Channel Name:</label>
         <div class="chnl-pp-container">
             <input name="channel" class="chnl-pp-input" id="chnl-input">
             <button type="submit" class="chnl-pp-submit"></button>
         </div>
+        <img id="settings-btn" src="img/settings.svg" onclick="setBtn()">
         <div id="explore-grid"></div>
     </form>
     <div class="video-container" id="video-cont">
