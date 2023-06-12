@@ -5,6 +5,7 @@ A bridge for Iranians who are restricted to access `twitch.tv`.
 a COMPLETE frontend webapp (kinda)
 
 - The stream player is for android browser (tested in android 12, idk if it works on lower version of androids) howewer, the chat completely support all browsers.
+- The only data that is collected are emotes that do not have an image, which can be seen by typing the code `getCookie("noemotes")`.
 
 ## TODO List
 1. Get app working perfectly fine in desktop (see stream in desktop)
