@@ -182,7 +182,7 @@ body {
     margin: 0 auto;
     background-origin: content-box;
     background-repeat: no-repeat;
-    background-image: url(img/left-arrow.svg);
+    background-image: url(../img/left-arrow.svg);
     float: right;
 }
 
@@ -466,6 +466,25 @@ body {
     transition-duration: var(--transition-duration);
 }
 
+
+/* Error */
+.error {
+    z-index: 10;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    position: absolute;
+    top: 0;
+    background-color: hsl(var(--ambient-color-hsl), 10%);
+}
+
+.error-text {
+    width: 100vw;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    transform: translateY(-50%);
+}
 
 /* Responsive */
 @media only screen and (max-width: 350px) {

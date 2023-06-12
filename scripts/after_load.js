@@ -1,3 +1,34 @@
+let isError = false;
+let err = "";
+fetch('https://api.twitchfa.com/v2/twitch/streamers?page=1&limit=100')  
+  .then(function(response) {
+      if(!response.ok) {
+        isError = true
+        const error_div = document.createElement('div');
+        const error_span = document.createElement('span');
+        error_div.classList.add("error");
+        error_span.classList.add("error-text");
+        error_span.innerHTML = `API ERROR`;
+        error_div.appendChild(error_span);
+        document.body.appendChild(error_div);
+    }
+  })
+  .catch(function(error) {
+    isError = true;
+    err = 'Request failed! ' + error
+    const error_div = document.createElement('div');
+    error_div.classList.add("error");
+    error_div.innerHTML = `${data["message"]}`;
+    document.body.appendChild(error_div);
+  });
+
+if (isError) {
+    const error_div = document.createElement('div');
+    error_div.classList.add("error");
+    error_div.innerHTML = `${data["message"]}`;
+    document.body.appendChild(error_div);
+}
+
 // Set chnl to ?channel=
 const search_params = new URLSearchParams(window.location.search);
 if (search_params.has('channel')) {
