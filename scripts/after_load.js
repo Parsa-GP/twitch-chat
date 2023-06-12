@@ -36,13 +36,14 @@ function resetHue() {
     Root.setProperty('--ambient-color', `hsl(${hue}, ${saturation}%, 64%)`);
     Root.setProperty('--ambient-color-hsl', `${hue}, ${saturation}%`);
 }
+
 function setBtn() {
     document.getElementById("settings-cont").style.display = "flex"
 }
+
 function setSub() {
     document.getElementById("settings-cont").style.display = "none"
 }
-    
 
 
 fetch('https://api.twitchfa.com/v2/twitch/streamers?page=1&limit=100')  
@@ -136,16 +137,8 @@ function bioInfo(streamer) {
     .then(response => response.json())
     .then(data => {
         const user = data[0].data.user;
-        info = {
-            "description": user.description,
-            "id": user.id,
-            "isPartner": user.isPartner,
-            "profile": user.profileImageURL,
-            "follower": user.followers.totalCount,
-            "socials": user.channel.socialMedias,
-        }
 
-        twitchId = info.id
+        twitchId = user.id
 
         let em_dataresponse;
         ERR=false
@@ -155,16 +148,16 @@ function bioInfo(streamer) {
             .catch(error => {console.log(error); ERR = true;});
 
 
-        document.getElementById("bio-pfp").src = info.profile;
-        if (info.isPartner) {
+        document.getElementById("bio-pfp").src = user.profileImageURL;
+        if (user.isPartner) {
             document.getElementById("bio-pfp-badge").style.display = "block";
         }
         document.getElementById("bio-name").innerHTML = streamer;
-        document.getElementById("bio-follower").innerHTML = f2k(info.follower) + " Followers";
-        document.getElementById("bio-desc").innerHTML = info.description;
+        document.getElementById("bio-follower").innerHTML = f2k(user.followers.totalCount) + " Followers";
+        document.getElementById("bio-desc").innerHTML = user.description;
 
         const bio_cont = document.getElementById("bio-social-cont");
-        info.socials.forEach(item => {
+        user.channel.socialMedias.forEach(item => {
             const bioitem = document.createElement('a');
             bioitem.href = item.url;
             bioitem.classList.add('bio-item');
