@@ -1,12 +1,24 @@
 * {padding:0; margin:0;}
 
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%) scale(0.3);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0) scale(1);
+        opacity: 1;
+    }
+}
+
 :root {
     --font-family: Vazirmatn, Vazir, Arial, Helvetica, sans-serif;
     --ambient-color: hsl(264, 100%, 64%);
     --ambient-color-hsl: 264, 100%;
     --transition-duration: 200ms;
     --column-count: 2;
-
+    --chat-width: 250px;
+    --pride-flag: linear-gradient(90deg, red 16.66%, orange 0 33.33%, yellow 0 50%, green 0 66.66%, blue 0 83.33%, indigo 0);
     --vid-bg: var(--ambient-color);
 }
 
@@ -38,6 +50,7 @@ body {
     padding-bottom: 5px;
     font-family: var(--font-family);
     color: hsl(var(--ambient-color-hsl), 98%);
+    animation: slideIn 250ms ease-out;
 }
 
 
@@ -592,16 +605,45 @@ body {
 
 @media only screen and (min-width: 768px) {
     /* For desktop: */
-    :root {--column-count: 4;}
-    #popup > label {font-size: 2.5em;}
+    :root {
+        --column-count: 4;
+        --pride-flag: linear-gradient(red 16.66%, orange 0 33.33%, yellow 0 50%, green 0 66.66%, blue 0 83.33%, indigo 0);
+    }
+    #stream {
+        width: calc(100vw - calc(var(--chat-width) + 24px));
+        right: 0;
+        height: 100vh;
+        position: fixed;
+    }
+    #chat-container {
+        clear: unset;
+        position: relative;
+        z-index: 4;
+        width: var(--chat-width);
+        top: 0;
+        font-size: small;
+        background-color: rgb(34, 32, 34);
+    }
+    #bio {
+        position: fixed;
+        bottom: 0;
+        z-index: 5;
+        width: calc(100% - calc(var(--chat-width) + 45px));
+        right: 0;
+    }
+    .video-container:hover ~ #bio {top: unset}
     .chnl-pp-container {top: 19%;}
+    #popup > label {font-size: 2.5em;}
+    #tools {left: calc(var(--chat-width) + 25px);}
+    #bio:hover {top: unset}
 }
 
-@media only screen and (min-width: 960px) {
+@media only screen and (min-width: 970px) {
     /* For desktopV2: */
     :root {--column-count: 5;}
     #popup > label {font-size: 2.5em;}
     .chnl-pp-container {top: 19%;}
+    #bio-desc {position: absolute;}
 }
 
 @media only screen and (min-width: 1600px) {

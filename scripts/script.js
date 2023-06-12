@@ -1,6 +1,6 @@
 const month = new Date().getMonth();
 if (month == 5) {
-    document.querySelector(':root').style.setProperty('--vid-bg', 'linear-gradient(90deg, red 16.66%, orange 0 33.33%, yellow 0 50%, green 0 66.66%, blue 0 83.33%, indigo 0)');
+    document.querySelector(':root').style.setProperty('--vid-bg', 'var(--pride-flag)');
 } else if (month == 11) {
     document.querySelector(':root').style.setProperty('--vid-bg', 'linear-gradient(90deg, #00c4ff, #005aff);');
 }
