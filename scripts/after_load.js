@@ -1,5 +1,7 @@
 let isError = false;
 let err = "";
+let twitchId;
+let em_dataresponse;
 
 var slider = document.getElementById("set-color-hue");
 var setbtn = document.getElementById("settings-btn");
@@ -115,6 +117,20 @@ fetch(`https://tw-rly.fly.dev/streamer/${chnl}`)
     stream.load();
 })
 
+// Fetch Emote list
+fetch(`https://tw-rly.fly.dev/streamer/${chnl}/bio`)
+.then(response => response.json())
+.then(data => {
+    twitchId = data[0].data.user.id
+
+    ERR=false
+    fetch(`https://7tv.io/v3/users/twitch/${twitchId}`)
+        .then(response => response.json())
+        .then(data => em_dataresponse = data)
+        .catch(error => {console.log(error); ERR = true;});
+})
+
+
 function bioInfo(streamer) {
     fetch(`https://tw-rly.fly.dev/streamer/${streamer}/bio`)
     .then(response => response.json())
@@ -122,11 +138,22 @@ function bioInfo(streamer) {
         const user = data[0].data.user;
         info = {
             "description": user.description,
+            "id": user.id,
             "isPartner": user.isPartner,
             "profile": user.profileImageURL,
             "follower": user.followers.totalCount,
             "socials": user.channel.socialMedias,
         }
+
+        twitchId = info.id
+
+        let em_dataresponse;
+        ERR=false
+        fetch(`https://7tv.io/v3/users/twitch/${twitchId}`)
+            .then(response => response.json())
+            .then(data => em_dataresponse = data)
+            .catch(error => {console.log(error); ERR = true;});
+
 
         document.getElementById("bio-pfp").src = info.profile;
         if (info.isPartner) {
@@ -179,6 +206,7 @@ function playStream(url) {
     }
     
 }*/
+
 function msToHMS(ms) {
     let seconds = ms / 1000;
 

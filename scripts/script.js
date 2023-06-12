@@ -8,6 +8,16 @@ if (month == 5) {
 let thumb_w = 1280;
 let thumb_h = 720;
 
+function notEmote(emote_name) {
+    if (document.cookie.indexOf("noemotes") !== -1) {
+        const noemotes = JSON.parse(getCookie("noemotes"))
+        noemotes.push(emote_name)
+        setCookie("noemotes", JSON.stringify(Array.from(new Set(noemotes))))
+    } else {
+        setCookie("noemotes", `["${emote_name}"]`)
+    }
+}
+
 function getCookie(cname) {
     /* thanks w3school */
     let name = cname + "=";
@@ -37,24 +47,17 @@ function thumbUrl(chnl) {
     return `https://static-cdn.jtvnw.net/previews-ttv/live_user_${chnl}-${thumb_w}x${thumb_h}.jpg`
 }
 
-function t2e(input, twitchId) {
+function t2e(input) {
     let output;
-    let data_response;
-    ERR=false
-    fetch(`https://7tv.io/v3/users/twitch/${twitchId}`)
-    .then(response => response.json())
-    .then(data => data_response = data)
-    .catch(error => {console.log(error); ERR = true;});
-
-    if (!ERR) {
-        console.log(JSON.stringify(data_response))
-        const json = JSON.parse(JSON.stringify(data_response));
+    if (!ERR && em_dataresponse !== null) {
+        console.log()
+        const json = JSON.parse(JSON.stringify(em_dataresponse));
         const emotes = {};
         json.emote_set.emotes.forEach((emote) => {
             emotes[emote.name] = `https:${emote.data.host.url}/2x.webp`;
         });
         output = input.replace(/\b(\w+)\b/g, (_match, word) =>
-            emotes[word] ? `<img src="${emotes[word]}">` : word
+            emotes[word] ? `<img class="emote e-7tv" src="${emotes[word]}">` : word
         );
 
         return output;

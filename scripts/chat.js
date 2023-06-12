@@ -17,7 +17,6 @@ const client = new tmi.Client({
 client.connect();
 
 client.on('message', (channel, tags, message, self) => {
-    console.log(tags)
     let messageWithEmoticons = message;
     const emotes = tags['emotes'];
     if(emotes) {
@@ -26,7 +25,7 @@ client.on('message', (channel, tags, message, self) => {
             const start = parseInt(splitEmote[0]);
             const end = parseInt(splitEmote[1]) + 1;
             const emoteContent = message.substring(start, end);
-            const emote = `<img class="emote" src="https://static-cdn.jtvnw.net/emoticons/v1/${property}/1.0" />`;
+            const emote = `<img class="emote e-twitch" src="https://static-cdn.jtvnw.net/emoticons/v1/${property}/1.0" />`;
             messageWithEmoticons = messageWithEmoticons.replaceAll(emoteContent, emote);
         }
     }
@@ -37,9 +36,9 @@ client.on('message', (channel, tags, message, self) => {
     messageContainer.classList.add('message');
     let badges = "";
     for (const k in tags["badges"]) {
-        badges += `<img src="img/badges/${k}.png" onerror="this.onerror=null;this.style.display = 'none'" class="badge ${k}">`
+        badges += `<img src="img/badges/${k}.png" onerror="this.onerror=null;this.style.display = 'none';notEmote('${k}')" class="badge ${k}">`
     }
-    messageContainer.innerHTML = `${badges} <span style="color:${tags['color']};" class="display-name">${tags['display-name']}: </span>${messageWithEmoticons}`;
+    messageContainer.innerHTML = `${badges} <span style="color:${tags['color']};" class="display-name">${tags['display-name']}: </span>${t2e(messageWithEmoticons, twitchId)}`;
 
     container.appendChild(messageContainer);
 
