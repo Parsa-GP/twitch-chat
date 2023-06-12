@@ -8,6 +8,7 @@ a COMPLETE frontend webapp (kinda)
 
 ## TODO List
 1. Get app working perfectly fine in desktop (see stream in desktop)
+2. Adding sub-gifter badge[.](https://www.google.com/search?q=sub+gifter+twitch+badge&tbm=isch#imgrc=bWzoPFdZVHiHcM)
 
 ## Built with
 * JavaScript
