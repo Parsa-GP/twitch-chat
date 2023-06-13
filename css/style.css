@@ -632,9 +632,9 @@ body {
         right: 0;
     }
     .video-container:hover ~ #bio {top: unset}
-    .chnl-pp-container {top: 19%;}
-    #popup > label {font-size: 2.5em;}
-    #tools {left: calc(var(--chat-width) + 25px);}
+    .chnl-pp-container {top: 19%}
+    #popup > label {font-size: 2.5em}
+    #tools {left: calc(var(--chat-width) + 25px)}
     #bio:hover {top: unset}
     .emote {max-height: 20px;}
     .badge {max-height: 14px;}
