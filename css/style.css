@@ -37,11 +37,11 @@ body {
         font-weight: 400;
         -webkit-text-stroke: 0.4px black;}  /* User */
 
-.badge {width:20px; height:20px;margin-right: 3px;}
+.badge {max-height:20px;margin-right: 3px;}
 .display-name {font-weight: bold; color: hsl(var(--ambient-color-hsl), 86%);}
 
 .emote {
-    height: 25px;
+    max-height: 25px;
     top: 3px;
     position: relative;
 }
@@ -636,6 +636,8 @@ body {
     #popup > label {font-size: 2.5em;}
     #tools {left: calc(var(--chat-width) + 25px);}
     #bio:hover {top: unset}
+    .emote {max-height: 20px;}
+    .badge {max-height: 14px;}
 }
 
 @media only screen and (min-width: 970px) {
