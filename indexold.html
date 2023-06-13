@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="A bridge for Iranians who are restricted to access twitch.tv.">
+    <title>Twitch Client</title>
+    <link rel="icon" href="img/favicon.png">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="scripts/tmi.min.js"></script>
+    <script src="scripts/script.js"></script>
+    <script src="scripts/chat.js"></script>
+    <!--<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />-->
+</head>
+<body>
+    <div id="settings-cont">
+        <input type="range" min="0" max="359" value="264" id="set-color-hue">
+        <button id="reset-hue" onclick="resetHue()">Reset Color</button>
+        <button id="set-submit" onclick="setSub()">Back</button>
+    </div>
+
+    <form target="_self" method="get" class="chnl-pp-bg" id="popup">
+        <label>Type the Channel Name:</label>
+        <div class="chnl-pp-container">
+            <input name="channel" class="chnl-pp-input" id="chnl-input">
+            <button type="submit" class="chnl-pp-submit"></button>
+        </div>
+        <img id="settings-btn" src="img/settings.svg" onclick="setBtn()">
+        <div id="explore-grid"></div>
+    </form>
+    <div class="video-container" id="video-cont">
+        <video id="stream" controls autoplay>
+            <source id="stream-src" type="application/x-mpegURL">
+        </video>
+            <!--<div id="controls">
+                <button onclick="playStream()">▶</button>
+            </div>-->
+        <div id="tools">
+            <button id="back-to-popup" onclick="backToPopup()">Back</button>
+            <select id="qualityDropdown"><option value="">Quality</option></select>
+        </div>
+    </div>
+    <div id="bio">
+        <div class="bio-info">
+            <img id="bio-pfp">
+            <div class="bio-nf">
+                <div class="bio-name-cont">
+                    <span id="bio-name"></span>
+                    <img id="bio-pfp-badge" src="img/partner.png">
+                </div>
+                <span id="bio-follower"></span>
+            </div>
+            <div id="bio-social-cont"></div>
+        </div>
+        <span id="bio-desc"></span>
+    </div>
+
+    <div class="filler"></div>
+    <script src="scripts/after_load.js"></script>
+
+    <div id="chat-container"></div>
+</body>
+</html>
